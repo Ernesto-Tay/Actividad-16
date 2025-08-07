@@ -21,6 +21,17 @@ class libro:
             if libro['titulo'] == nombre:
                 del libros[libros.index(libro)]
 
-
-
-
+while True:
+    print("\n\nSISTEMA DE LIBROS\n1. Agregar libros\n2. Mostrar lista de libros\n3. Eliminar libro\n4. Salir")
+    select = input("Seleccione una opción")
+    match select:
+        case "1":
+            pass
+        case "2":
+            pass
+        case "3":
+            pass
+        case "4":
+            pass
+        case _:
+            print("Opción inválida, intente nuevamente")
