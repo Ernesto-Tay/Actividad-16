@@ -5,18 +5,16 @@ class libro:
         self.autor = autor
         self.ano = ano
 
-    def agregar(self):
-        libro = {
-            'titulo': self.titulo,
-            'autor': self.autor,
-            'ano': self.ano
-        }
+    def agregar(self,libro):
         libros.append(libro)
 
     def mostrar(self):
-        print("--"+10 + " LIBROS " + "--"*10)
-        for libro in libros:
-            print(f"Nombre: {libro['titulo']}. Autor: {libro['autor']}. Año: {libro['ano']}")
+        if not libros:
+            print("No hay libros aún")
+        else:
+            print("--"+10 + " LIBROS " + "--"*10)
+            for libro in libros:
+                print(f"Nombre: {libro['titulo']}. Autor: {libro['autor']}. Año: {libro['ano']}")
 
     def eliminar(self, nombre):
         for libro in libros:
