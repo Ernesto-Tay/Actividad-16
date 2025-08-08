@@ -1,5 +1,7 @@
+from bdb import Breakpoint
+
 libros = []
-class libro:
+class Libro:
     def __init__(self, titulo, autor, ano):
         self.titulo = titulo
         self.autor = autor
@@ -12,7 +14,7 @@ class libro:
         if not libros:
             print("No hay libros aún")
         else:
-            print("--"+10 + " LIBROS " + "--"*10)
+            print("--"*10 + " LIBROS " + "--"*10)
             for libro in libros:
                 print(f"Nombre: {libro['titulo']}. Autor: {libro['autor']}. Año: {libro['ano']}")
 
@@ -26,7 +28,38 @@ while True:
     select = input("Seleccione una opción")
     match select:
         case "1":
-            pass
+            while True:
+                try:
+                    cant = int(input("¿Cuántos libros va a ingresar?: "))
+                    if cant <= 0:
+                        print("La cantidad debe ser superior a 0")
+                    else:
+                        break
+                except ValueError:
+                    print("Ingrese un número entero")
+                except Exception as e:
+                    print(f"Error inesperado: {e}")
+
+            for i in range(cant):
+                while True:
+                    try:
+                        titulo = input("\nIngrese el titulo del libro: ")
+                        autor = input("Ingrese el autor del libro: ")
+                        ano = int(input("Ingrese el año de lanzamiento del libro: "))
+                        if autor.isalpha() and 1000<ano<2026:
+                            break
+                        else:
+                            if not autor.isalpha():
+                                print("El nombre del autor no puede tener letras")
+                            elif ano < 1000 or ano > 2026:
+                                print("Ingrese una fecha de lanzamiento razonable")
+                    except ValueError:
+                        print("Ingrese números enteros en la entrada del año")
+                    except Exception as e:
+                        print(f"Error inesperado: {e}")
+                libro = Libro(titulo, autor, ano)
+                libro.agregar(libro)
+
         case "2":
             pass
         case "3":
