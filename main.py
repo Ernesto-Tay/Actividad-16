@@ -80,7 +80,6 @@ while True:
                     except Exception as e:
                         print(f"Error inesperado: {e}")
 
-
         case "4":
             print("Saliendo...")
             break
