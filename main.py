@@ -15,9 +15,16 @@ class Libro:
         libros.append(libro)
 
     def eliminar(self, nombre):
+        delete = False
         for libro in libros:
-            if libro['titulo'] == nombre:
+            if libro.titulo == nombre:
                 del libros[libros.index(libro)]
+                delete = True
+                break
+        if not delete:
+            print("El libro no existe")
+
+libro1 = Libro('Robinson Crusoe', 'Daniel Defoe', '1719')
 
 while True:
     print("\n\nSISTEMA DE LIBROS\n1. Agregar libros\n2. Mostrar lista de libros\n3. Eliminar libro\n4. Salir")
@@ -65,8 +72,17 @@ while True:
                 print("No hay libros")
 
         case "3":
-            pass
+            if libro_exist():
+                while True:
+                    try:
+                        titulo_delete = input("\nIngrese el titulo del libro a eliminar: ")
+                        libro1.eliminar(titulo_delete)
+                    except Exception as e:
+                        print(f"Error inesperado: {e}")
+
+
         case "4":
-            pass
+            print("Saliendo...")
+            break
         case _:
             print("Opción inválida, intente nuevamente")
