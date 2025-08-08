@@ -1,6 +1,10 @@
-from bdb import Breakpoint
-
 libros = []
+def libro_exist():
+    if libros:
+        return True
+    else:
+        return False
+
 class Libro:
     def __init__(self, titulo, autor, ano):
         self.titulo = titulo
@@ -9,14 +13,6 @@ class Libro:
 
     def agregar(self,libro):
         libros.append(libro)
-
-    def mostrar(self):
-        if not libros:
-            print("No hay libros aún")
-        else:
-            print("--"*10 + " LIBROS " + "--"*10)
-            for libro in libros:
-                print(f"Nombre: {libro['titulo']}. Autor: {libro['autor']}. Año: {libro['ano']}")
 
     def eliminar(self, nombre):
         for libro in libros:
@@ -61,7 +57,13 @@ while True:
                 libro.agregar(libro)
 
         case "2":
-            pass
+            if libro_exist():
+                print("\n"+"--"*10+" LIBROS EXISTENTES "+"--"*10)
+                for libro in libros:
+                    print(f"Nombre: {libro.titulo} | Autor: {libro.autor} | Año: {libro.ano}")
+            else:
+                print("No hay libros")
+
         case "3":
             pass
         case "4":
